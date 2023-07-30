@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+    <br>
+    <h3>DETAILS DESTINATION PAGE</h3>
+    <br>
+
+    <div class="card bg-light text-dark" >
+        <div class="card-body">
+            <h5 class="card-title">{{ task.destination_name }}</h5>
+            <p class="card-text">Information: {{ task.information }}</p>
+            {% if task.recommendation_to_visit %}
+            <p>The destination is recommended</p>
+            {% else %}
+            <p>The destination is not recommended</p>
+            {% endif %}
+
+        </div>
+            <a href="{{ task.destination_photo }}">
+                <h4 class="details"><img src="{{ task.destination_photo }}" class="card-img-bottom" alt="..." style="width: 33rem;"></h4>
+            </a>
+    </div>
+    <br>
+            {% if is_owner %}
+                <p style="display: inline">>>>>>></p>
+                <a href="{% url 'edit destination' pk=task.pk %}">
+                    <h4 class="details" style="display: inline"><button>Edit destination</button></h4>
+                </a>
+                <p style="display: inline">>>>>>></p>
+                  <a href="{% url 'delete destination' pk=task.pk %}">
+                    <h4 class="details" style="display: inline"><button>Delete destination</button></h4>
+                </a>
+            {% endif %}
+    <br>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+    <br>
+    <h3>DETAILS FOOD PAGE</h3>
+    <br>
+
+    <div class="card bg-light text-dark" >
+        <div class="card-body">
+            <h5 class="card-title">{{ food.food_name }}</h5>
+             <a href="{% url 'details destination' pk=food.destination.pk %}">
+                    <h4 class="details">Destination: {{ food.destination}}</h4>
+                </a>
+            <p class="card-text">Opinion: {{ food.opinion }}</p>
+
+        </div>
+            <a href="{{ food.food_photo }}">
+                <h4 class="details"><img src="{{ food.food_photo }}" class="card-img-bottom" alt="..." style="width: 33rem;"></h4>
+            </a>
+    </div>
+    <br>
+            {% if is_owner %}
+                <p style="display: inline">>>>>>></p>
+                <a href="{% url 'edit food' pk=food.pk %}">
+                    <h4 class="details" style="display: inline"><button>Edit food</button></h4>
+                </a>
+                <p style="display: inline">>>>>>></p>
+                  <a href="{% url 'delete food' pk=food.pk %}">
+                    <h4 class="details" style="display: inline"><button>Delete food permanently</button></h4>
+                </a>
+            {% endif %}
+    <br>
+
+
+{% endblock %}

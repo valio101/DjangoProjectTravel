@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    <h4><img src="{% static 'images/11111111.png' %}"> PROFILE DETAILS PAGE</h4>
+    <h5>User: {{ object.username }}</h5>
+
+
+    {% if destinations %}
+        <h6 style="display: inline">DESTINATIONS:</h6>
+        {% for destination in destinations %}
+        <a href="{% url 'details destination' pk=destination.pk %}">
+            <h5 style="display: inline">
+                >>>  {{ destination.destination_name }}
+            </h5>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p>NO DESTINATIONS</p>
+    {% endif %}
+
+    <p>Total photos uploaded by user: {{ photos_count }}</p>
+
+    <div class="row row-cols-1 row-cols-md-2 gap-4" style="width: 95rem;">
+    {% for photo in photos %}
+        <div class="card bg-light text-dark" style="width: 18rem;" >
+        <div class="card-body">
+             <a href="{% url 'details photo' pk=photo.pk %}">
+                    <h4 class="details">See photo details</h4>
+                </a>
+        </div>
+                <h4 class="details"><img src="{{ photo.photo.url }}" class="card-img-bottom" alt="..." ></h4>
+        </div>
+
+    {% endfor %}
+
+    </div>
+    <br>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+                {% if photos.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">first</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ photos.previous_page_number }}">previous</a></li>
+                {% endif %}
+
+                <span class="page-link">
+                    Page {{ photos.number }} of {{ photos.paginator.num_pages }}
+                </span>
+
+                {% if photos.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ photos.next_page_number }}">next</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ photos.paginator.num_pages }}">last &raquo;</a></li>
+                {% endif %}
+        </ul>
+    </nav>
+
+        {% if is_owner %}
+            <p style="display: inline">>>>>>>>>>>></p>
+            <a href="{% url 'edit user' pk=object.pk %}">
+                <h4 class="details" style="display: inline"><button>Edit profile</button></h4>
+            </a>
+            <p style="display: inline">>>>>>>>>>>>>></p>
+            <a href="{% url 'delete user' pk=object.pk %}">
+                <h4 class="details" style="display: inline"><button>Delete profile</button></h4>
+            </a>
+        {% endif %}
+          <br>
+          <br>
+
+{% endblock %}

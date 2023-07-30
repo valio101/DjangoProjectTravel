@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load placeholder %}
+{% load static %}
+{% block page_content %}
+            <br>
+            <br>
+
+            <p>Register page</p>
+            <form method="post" action="{% url 'register user' %}">
+                <p>{{ form.username|placeholder:'Username: ' }}</p>
+                <p>{{ form.email|placeholder:'Email: ' }}</p>
+                <p>{{ form.password1|placeholder:'Password: ' }}</p>
+                <p>{{ form.password2|placeholder:'Repeat password: ' }}</p>
+                <button type="submit">Register</button>
+                {% csrf_token %}
+            </form>
+
+                <p>Have an account? <a href="{% url 'login user' %}">Log in</a></p>
+
+
+{% endblock %}

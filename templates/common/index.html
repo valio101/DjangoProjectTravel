@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+        <br>
+        <div>
+            <h2>
+                <img src="{% static 'images/5219577.png' %}" style="width: 5rem;">
+            <p class="d-inline">Share Your Travel Experience</p>
+            <img src="{% static 'images/5219577.png' %}" style="width: 5rem;">
+            </h2>
+        </div>
+        <br>
+        <br>
+        <div class="d-inline-flex p-2 align-items-center" ><a href="{% url 'see photos' %}"><img class="rounded border border-secondary" src="{% static 'images/4.jpg' %}"></a></div>
+        <div class="d-inline-flex p-2 align-items-center" ><a href="{% url 'see foods' %}"><img class="rounded border border-secondary" src="{% static 'images/2.jpg' %}"></a></div>
+        <br>
+
+{% endblock %}

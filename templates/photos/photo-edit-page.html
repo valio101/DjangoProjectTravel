@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+    <br>
+
+
+
+    {% if is_owner %}
+    <h2>Edit photo</h2>
+        <form method="post" action="{% url 'edit photo' pk=photo.pk %}" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button class="edit-btn" type="submit">Edit Photo</button>
+        </form>
+    {% else %}
+        <div>
+            <p>NO ACCESS</p>
+            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
