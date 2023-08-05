@@ -5,6 +5,7 @@ from django.views.generic import CreateView, DetailView, UpdateView
 
 from djangoProjectTravel.destination.models import Destination
 from djangoProjectTravel.foods.models import Food
+from django import forms
 
 
 class AddFood(CreateView):
@@ -12,6 +13,16 @@ class AddFood(CreateView):
     fields = ['food_name', 'food_photo', 'opinion', 'destination']
     success_url = reverse_lazy('index')
     template_name = 'foods/food-add-page.html'
+
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+
+        form = super(AddFood, self).get_form(form_class)
+        form.fields['food_name'].widget = forms.TextInput(attrs={'placeholder': 'Food name'})
+        form.fields['food_photo'].widget = forms.URLInput(attrs={'placeholder': 'Link to image'})
+        form.fields['opinion'].widget = forms.Textarea(attrs={'placeholder': 'Opinion about the food'})
+        return form
 
     def form_valid(self, form):
         form.instance.user = self.request.user

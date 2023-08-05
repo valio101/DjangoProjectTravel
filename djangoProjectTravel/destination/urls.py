@@ -11,6 +11,7 @@ urlpatterns = (
         path('', login_required(DestinationDetailsView.as_view()), name='details destination'),
         path('edit/', login_required(EditDestinationView.as_view()), name='edit destination'),
         path('delete/', login_required(DestinationDeleteView.as_view()), name='delete destination'),
+        # path('api/destinations', login_required(DestinationsAsJSON.as_view()), name='api destinations'),
 
     ])),
 )

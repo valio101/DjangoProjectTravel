@@ -8,6 +8,14 @@ class PhotoBaseForm(forms.ModelForm):
         model = Photo
         exclude = ('publication_date', 'user', )
 
+        widgets = {
+            'description': forms.TextInput(
+                attrs={
+                    'placeholder': 'Description'
+                }
+            ),
+        }
+
 
 class PhotoCreateForm(PhotoBaseForm):
     pass

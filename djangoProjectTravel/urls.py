@@ -10,6 +10,7 @@ urlpatterns = [
     path('destination/', include('djangoProjectTravel.destination.urls')),
     path('photos/', include('djangoProjectTravel.photos.urls')),
     path('foods/', include('djangoProjectTravel.foods.urls')),
+    path('api/', include('djangoProjectTravel.restcapabilities.urls')),
 ]
 
 if settings.DEBUG:

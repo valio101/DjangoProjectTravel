@@ -48,7 +48,6 @@ class UserDetailsView(views.DetailView):
         context['photos_count'] = self.object.photo_set.count()
         # photos = self.object.photo_set.prefetch_related('photolike_set')
         # context['photos_count'] = photos.count()
-        # context['likes_count'] = sum(x.photolike_set.count() for x in photos)
         context['photos'] = self.get_paginated_photos()
         context['destinations'] = self.object.destination_set.all
         # context['photos'] = self.object.photo_set.all()
@@ -76,4 +75,3 @@ class UserDeleteView(views.DeleteView):
     template_name = 'accounts/profile-delete-page.html'
     model = UserModel
     success_url = reverse_lazy('index')
-

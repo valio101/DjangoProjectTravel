@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from django.views import generic as views
+from django import forms
 
 from djangoProjectTravel.common.models import PhotoComment
 from djangoProjectTravel.destination.forms import DestinationEditForm
@@ -15,6 +16,16 @@ class AddDestination(CreateView):
     fields = ['destination_name', 'destination_photo', 'information', 'recommendation_to_visit']
     success_url = reverse_lazy('index')
     template_name = 'destination/destination-add-page.html'
+
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+
+        form = super(AddDestination, self).get_form(form_class)
+        form.fields['destination_name'].widget = forms.TextInput(attrs={'placeholder': 'Destination name'})
+        form.fields['destination_photo'].widget = forms.URLInput(attrs={'placeholder': 'Link to image'})
+        form.fields['information'].widget = forms.Textarea(attrs={'placeholder': 'Information about the food'})
+        return form
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -63,3 +74,7 @@ class DestinationDeleteView(views.DeleteView):
         return context
 
     success_url = reverse_lazy('index')
+
+
+# class DestinationsAsJSON(ListAPIView):
+#     pass

@@ -3,6 +3,8 @@ from django.urls import path, include
 from djangoProjectTravel.accounts.views import SignUpView, SignInView, SignOutView, UserDetailsView, EditUserView, \
     UserDeleteView
 
+from .signals import *
+
 urlpatterns = (
     path('login/', SignInView.as_view(), name='login user'),
     path('register/'
@@ -14,4 +16,5 @@ urlpatterns = (
         path('delete/', UserDeleteView.as_view(), name='delete user'),
     ])),
 )
+
 

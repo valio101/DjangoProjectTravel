@@ -43,11 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'djangoProjectTravel.accounts',
     'djangoProjectTravel.common',
     'djangoProjectTravel.destination',
     'djangoProjectTravel.photos',
     'djangoProjectTravel.foods',
+    'djangoProjectTravel.restcapabilities',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +151,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.AppUser'
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'djangoprojecttravel@gmail.com'
+EMAIL_HOST_PASSWORD = 'cdyfcdbtxsmtsvsa'
+
