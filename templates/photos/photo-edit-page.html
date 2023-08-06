@@ -10,7 +10,7 @@
         <form method="post" action="{% url 'edit photo' pk=photo.pk %}" enctype="multipart/form-data">
             {{ form.as_p }}
             {% csrf_token %}
-            <button class="edit-btn" type="submit">Edit Photo</button>
+            <button class="edit-btn btn btn-warning" type="submit">Edit Photo</button>
         </form>
     {% else %}
         <div>

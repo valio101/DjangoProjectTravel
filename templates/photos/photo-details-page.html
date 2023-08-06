@@ -9,11 +9,11 @@
                 <div>
                 <p style="display: inline">>>>>></p>
                 <a href="{% url 'edit photo' pk=photo.pk %}" >
-                    <h4 class="details" style="display: inline"><button>Edit photo</button></h4>
+                    <h4 class="details" style="display: inline"><button type="button" class="btn btn-warning">Edit photo</button></h4>
                 </a>
                     <p style="display: inline">>>>>></p>
                   <a href="{% url 'delete photo' pk=photo.pk %}">
-                    <h4 class="details" style="display: inline"><button>Delete photo permanently</button></h4>
+                    <h4 class="details" style="display: inline"><button type="button" class="btn btn-danger">Delete photo permanently</button></h4>
                 </a>
                 </div>
             {% endif %}
@@ -42,7 +42,7 @@
             <div>
                 <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
                     {{ comment_form }}
-                    <button type="submit">Post</button>
+                    <button class="btn btn-primary" type="submit">Post</button>
                     {% csrf_token %}
                 </form>
             </div>

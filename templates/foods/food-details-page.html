@@ -22,11 +22,11 @@
             {% if is_owner %}
                 <p style="display: inline">>>>>>></p>
                 <a href="{% url 'edit food' pk=food.pk %}">
-                    <h4 class="details" style="display: inline"><button>Edit food</button></h4>
+                    <h4 class="details" style="display: inline"><button type="button" class="btn btn-warning">Edit food</button></h4>
                 </a>
                 <p style="display: inline">>>>>>></p>
                   <a href="{% url 'delete food' pk=food.pk %}">
-                    <h4 class="details" style="display: inline"><button>Delete food permanently</button></h4>
+                    <h4 class="details" style="display: inline"><button type="button" class="btn btn-danger">Delete food permanently</button></h4>
                 </a>
             {% endif %}
     <br>

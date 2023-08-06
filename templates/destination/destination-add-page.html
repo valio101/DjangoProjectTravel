@@ -8,7 +8,7 @@
         <h2>Add destination</h2>
     <form action="{% url 'add destination' %}" method="post">
         {{ form.as_p }}
-        <button class="add-btn" type="submit">Add Destination</button>
+        <button class="add-btn btn btn-primary" type="submit">Add Destination</button>
         {% csrf_token %}
     </form>
 

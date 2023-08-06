@@ -7,7 +7,7 @@
 
     <form action="{% url 'add food' %}" method="post">
         {{ form.as_p }}
-        <button class="add-btn" type="submit">Add Food</button>
+        <button class="add-btn btn btn-primary" type="submit">Add Food</button>
         {% csrf_token %}
     </form>
 {#    {% if is_owner %}#}

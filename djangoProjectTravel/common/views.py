@@ -81,3 +81,6 @@ def see_foods(request):
     }
     return render(request, 'common/see-foods.html', context)
 
+
+def about_the_site(request):
+    return render(request, 'common/about-the-site.html')
